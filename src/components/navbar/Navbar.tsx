@@ -9,10 +9,10 @@ function Navbar() {
     const { usuario, handleLogout } = useContext(AuthContext)
 
     function logout() {
-        handleLogout()
-        alert('Usuário deslogado com sucesso')
-        navigate('/login')
-    }
+      handleLogout()
+      alert('Usuário deslogado com sucesso')
+      navigate('/login')
+  }
 
     let component: ReactNode;
 

@@ -14,13 +14,14 @@ import FormularioPostagem from './components/postagens/formulariopostagem/Formul
 import DeletarPostagem from './components/postagens/deletarpostagem/deletarPostagem';
 import Perfil from './pages/perfil/Perfil';
 
-
 function App() {
+  
   return (
     <>
-    <AuthProvider>
+      <AuthProvider>
+      <ToastContainer />
         <BrowserRouter>
-          <Navbar />
+        <Navbar />
           <div className='min-h-[80vh]'>
             <Routes>
               <Route path="/" element={<Login />} />
@@ -40,8 +41,9 @@ function App() {
           </div>
           <Footer />
         </BrowserRouter>
-        </AuthProvider>
+      </AuthProvider>
     </>
   );
 }
+
 export default App;
