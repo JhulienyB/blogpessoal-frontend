@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { ReactNode, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../contexts/AuthContext'
 
@@ -14,10 +14,10 @@ function Navbar() {
         navigate('/login')
     }
 
-    let navbarComponent
+    let component: ReactNode;
 
     if(usuario.token !== "") {
-      navbarComponent = (
+      component = (
         <div className='w-full bg-indigo-900 text-white flex justify-center py-4'>
           <div className="container flex justify-between text-lg">
             <Link to='/home' className='text-2xl font-bold uppercase'>Blog Pessoal</Link>
@@ -36,7 +36,7 @@ function Navbar() {
 
   return (
     <>
-      {navbarComponent}
+      {component}
     </>
   )
 }
