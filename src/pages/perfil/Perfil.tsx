@@ -1,8 +1,7 @@
 import { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-
 import { AuthContext } from '../../contexts/AuthContext'
-import { toastAlerta } from '../../utils/toastAlerta'
+import { ToastAlerta } from '../../utils/ToastAlerta'
 
 function Perfil() {
 
@@ -12,7 +11,7 @@ function Perfil() {
 
     useEffect(() => {
         if (usuario.token === "") {
-          toastAlerta('Dados inconsistentes. Verifique as informações de cadastro.', 'erro')
+          ToastAlerta('Dados inconsistentes. Verifique as informações de cadastro.', 'erro')
           navigate("/login")
         }
     }, [usuario.token])

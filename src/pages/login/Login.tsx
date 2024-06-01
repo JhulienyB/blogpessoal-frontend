@@ -1,43 +1,41 @@
-import { ChangeEvent, useContext, useEffect, useState } from 'react';
+﻿import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
-import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../contexts/AuthContext';
+import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import UsuarioLogin from '../../models/UsuarioLogin';
+import { AuthContext } from '../../contexts/AuthContext';
 import { RotatingLines } from 'react-loader-spinner';
 
 function Login() {
-  let navigate = useNavigate();
+  const navigate = useNavigate()
+  const { usuario, handleLogin, isLoading } = useContext(AuthContext)
 
   const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>(
     {} as UsuarioLogin
   );
 
-  const { usuario, handleLogin } = useContext(AuthContext);
-
-  const {isLoading} = useContext(AuthContext) 
-
   useEffect(() => {
-    if (usuario.token !== "") {
-        navigate('/home')
+    if(usuario.token !== ''){
+        navigate("/home")
     }
 }, [usuario])
 
 function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
   setUsuarioLogin({
       ...usuarioLogin,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
   })
 }
 
-function login(e: ChangeEvent<HTMLFormElement>) {
-  e.preventDefault()
+function login(e: ChangeEvent<HTMLFormElement>){
+  e.preventDefault();
   handleLogin(usuarioLogin)
 }
 
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-2 h-screen place-items-center font-bold ">
-        <form className="flex justify-center items-center flex-col w-1/2 gap-4" onSubmit={login}>
+        <form className="flex justify-center items-center flex-col w-1/2 gap-4"
+        onSubmit={login}>
           <h2 className="text-slate-900 text-5xl ">Entrar</h2>
           <div className="flex flex-col w-full">
             <label htmlFor="usuario">Usuário</label>
